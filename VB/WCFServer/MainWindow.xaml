@@ -1,0 +1,71 @@
+﻿<Window x:Class="WCFServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Title="MainWindow" Height="350" Width="525" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:local="clr-namespace:WCFServer"
+        xmlns:sr="clr-namespace:WCFServer.ServiceReference1"
+        xmlns:crud="clr-namespace:WCFServer;assembly=CRUDBehavior">
+    <Window.Resources>
+        <DataTemplate x:Key="EditRecordTemplate">
+            <StackPanel Margin="8" MinWidth="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="ID:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="0,0,6,4" />
+                    <dxe:TextEdit x:Name="txtID" Grid.Row="0" Grid.Column="1" EditValue="{Binding Path=Id, Mode=TwoWay}" Margin="0,0,0,4" />
+                    <TextBlock Text="Name:" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,0,6,4" />
+                    <dxe:TextEdit x:Name="txtCompany" Grid.Row="1" Grid.Column="1" EditValue="{Binding Path=Name, Mode=TwoWay}" Margin="0,0,0,4" />
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl Grid.Row="0" Name="grid" SelectionMode="Row">
+            <i:Interaction.Behaviors>
+                <crud:WCFServerModeCRUDBehavior x:Name="helper"
+                                                 EntityObjectType="{x:Type sr:Item}"
+                                                 DataSource="{Binding ElementName=WcfServerModeDataSource}"
+                                                 NewRowForm="{StaticResource ResourceKey=EditRecordTemplate}"
+                                                 EditRowForm="{StaticResource ResourceKey=EditRecordTemplate}"
+                                                 AllowKeyDownActions="True"
+                                                 PrimaryKey="Id"
+                                                 DataServiceContext="{Binding DataSource.DataServiceContext, RelativeSource={RelativeSource Self}}"/>
+            </i:Interaction.Behaviors>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Id">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings AllowNullInput="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Name">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings AllowNullInput="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="view" AutoWidth="True" NavigationStyle="Row" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="22" Width="60" Command="{Binding Path=NewRowCommand, ElementName=helper}">Add</Button>
+            <Button Height="22" Width="60" Command="{Binding Path=RemoveRowCommand, ElementName=helper}" Margin="6,0,6,0">Remove</Button>
+            <Button Height="22" Width="60" Command="{Binding Path=EditRowCommand, ElementName=helper}">Edit</Button>
+        </StackPanel>
+        <dxc:WcfServerModeDataSource Name="WcfServerModeDataSource" KeyExpression="Id" DataServiceContext="{Binding Entities}" Query="{Binding Entities.Items}"/>
+    </Grid>
+</Window>
