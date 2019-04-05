@@ -5,10 +5,10 @@
 * [WCFInstantModeCRUDBehavior.cs](./CS/CRUDBehaviorBase/WCFInstantModeCRUDBehavior.cs) (VB: [WCFInstantModeCRUDBehavior.vb](./VB/CRUDBehaviorBase/WCFInstantModeCRUDBehavior.vb))
 * [WCFServerModeCRUDBehavior.cs](./CS/CRUDBehaviorBase/WCFServerModeCRUDBehavior.cs) (VB: [WCFServerModeCRUDBehavior.vb](./VB/CRUDBehaviorBase/WCFServerModeCRUDBehavior.vb))
 * [MainWindow.xaml](./CS/WCFInstant/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WCFInstant/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/WCFInstant/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/WCFInstant/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/WCFInstant/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/WCFInstant/MainWindow.xaml.vb))
 * [Reference.cs](./CS/WCFInstant/Service References/ServiceReference1/Reference.cs) (VB: [Reference.vb](./VB/WCFInstant/Service References/ServiceReference1/Reference.vb))
 * [MainWindow.xaml](./CS/WCFServer/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WCFServer/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/WCFServer/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/WCFServer/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/WCFServer/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/WCFServer/MainWindow.xaml.vb))
 * [Reference.cs](./CS/WCFServer/Service References/ServiceReference1/Reference.cs) (VB: [Reference.vb](./VB/WCFServer/Service References/ServiceReference1/Reference.vb))
 * [WcfDataService.svc.cs](./CS/WCFService/WcfDataService.svc.cs) (VB: [WcfDataService.svc.vb](./VB/WCFService/WcfDataService.svc.vb))
 <!-- default file list end -->
